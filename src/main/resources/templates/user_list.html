@@ -1,0 +1,13 @@
+<div layout:decorator="decorator/core">
+	<h1 layout:fragment="headerline">Users</h1>
+
+	<div layout:fragment="content">
+		<a href="/user/register">Register</a>
+		<ul>
+			<li th:each="user : ${users}"><a href="/user/detail/"
+				th:attrappend="href=${user.userId}">
+				<span th:text="${user.name}">Onions</span></a>
+			</li>
+		</ul>
+	</div>
+</div>

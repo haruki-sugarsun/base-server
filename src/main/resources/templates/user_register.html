@@ -1,0 +1,12 @@
+<div layout:decorator="decorator/core">
+	<h1 layout:fragment="headerline">User Registration</h1>
+
+	<div layout:fragment="content">
+		<a href="/user/list">List</a>
+		<form action="/user/register" method="POST">
+			<div>Name: <input type="text" name="name" placeholder="Name"/></div>
+			<div>Snippet: <input type="text" name="snippet" placeholder="Snippet"/></div>
+			<div><input type="submit" value="SUBMIT"/></div>
+		</form>
+	</div>
+</div>

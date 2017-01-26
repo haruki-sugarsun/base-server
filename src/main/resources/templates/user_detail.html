@@ -1,0 +1,12 @@
+<div layout:decorator="decorator/core">
+	<h1 layout:fragment="headerline">User - <span th:text="${user.name}" th:remove="tag">User name</span></h1>
+
+	<div layout:fragment="content">
+		<a href="/user/list">List</a>
+		<ul>
+			<li>ID: <span th:text="${user.userId}" th:remove="tag">User ID</span></li>
+			<li>Name: <span th:text="${user.name}" th:remove="tag">User name</span></li>
+			<li>Snippet: <span th:text="${user.snippet}" th:remove="tag">User Snippet</span></li>
+		</ul>
+	</div>
+</div>
