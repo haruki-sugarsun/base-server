@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head th:include="common/head :: common_head"></head>
+
+<body>
+<header th:replace="common/head :: common_header"></header>
+
+<div th:replace="common/side :: side_navbar"></div>
+
+<section>
+<!-- vvvv Main content vvvv -->
+<h1 layout:fragment="headerline">Title Header Line</h1>
+
+<div layout:fragment="content">Main content</div>
+<!-- ^^^^ Main content ^^^^ -->
+<!-- /h1 --></section>
+
+<footer th:replace="common/footer :: common_footer"></footer>
+<div th:replace="common/footer :: common_footerjs"></div>
+</body>
+</html>

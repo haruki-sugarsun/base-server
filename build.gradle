@@ -1,0 +1,69 @@
+plugins {
+    id 'org.springframework.boot' version '1.4.3.RELEASE'
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    javaAgent
+}
+
+dependencies {
+    // Spring Boot
+    compile("org.springframework.boot:spring-boot-starter-web")
+
+    // Web pages
+    compile("org.thymeleaf:thymeleaf-spring4")
+    compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.6'
+
+    // Logging
+    runtime group: 'ch.qos.logback', name: 'logback-classic', version: '1.1.7'
+    runtime group: 'org.slf4j', name: 'log4j-over-slf4j', version: '1.7.21'
+
+    // Other commons
+    compileOnly "org.projectlombok:lombok:1.16.12"
+    compile group: 'commons-codec', name: 'commons-codec', version: '1.10'
+
+    // TODO: cleanup those optional patterns.
+    // optional: Armeria
+    ['armeria', 'armeria-jetty', 'armeria-kafka', 'armeria-logback', 'armeria-retrofit2',
+     'armeria-tomcat', 'armeria-zipkin', 'armeria-zookeeper'].each {
+        compile group: 'com.linecorp.armeria', name: it, version: '0.34.1'
+    }
+
+    // optional: MongoDB
+    compile group: 'org.mongodb.morphia', name: 'morphia', version: '1.3.1'
+    compile 'org.mongodb:mongo-java-driver:3.4.2'
+
+    // optional: SQLite
+	compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.16.1'
+
+    // optional: LDAP
+    compile group: 'org.apache.directory.api', name: 'api-ldap-client-api', version: '1.0.0-M33'
+
+    // test
+    testCompile 'junit:junit:4.12'
+}   
+
+bootRepackage {
+    // Change it when you write customized app.
+    mainClass = 'com.sickhack.base.Application'
+}
+
+// Require Java 8 to build the project.
+tasks.withType(JavaCompile) {
+    sourceCompatibility '1.8'
+    targetCompatibility '1.8'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.3'
+}
