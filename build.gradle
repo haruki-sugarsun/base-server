@@ -49,6 +49,12 @@ dependencies {
     // optional: LDAP
     compile group: 'org.apache.directory.api', name: 'api-ldap-client-api', version: '1.0.0-M33'
 
+	// Apache Ignite
+	compile group: 'org.apache.ignite', name: 'ignite-core', version: '1.8.0'
+	compile group: 'org.apache.ignite', name: 'ignite-schedule', version: '1.0.0'
+
+	
+
     // test
     testCompile 'junit:junit:4.12'
 }   
