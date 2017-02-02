@@ -1,10 +1,16 @@
 package com.sickhack.base;
 
+import org.apache.ignite.Ignite;
+import org.apache.ignite.IgniteServices;
+import org.apache.ignite.Ignition;
+import org.apache.ignite.configuration.IgniteConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+
+import com.sickhack.base.ignite.MyCounterServiceImpl;
 
 /**
  * Core configuration for the base-server.
@@ -20,8 +26,26 @@ public class AppConfiguration {
 	 * Fake bean creation to do initializations.
 	 */
 	@Bean
-	Void initializations() {
+	Void initializations(Ignite ignite) {
 		logger.info("Initializing.");
+		
+		// Ignite.
+		IgniteServices svcs = ignite.services();
+		svcs.deployClusterSingleton("myClusterSingleton", new MyCounterServiceImpl());
+		logger.info("services {}", svcs);
+		
 		return null;
+	}
+
+	@Bean
+	Ignite ignite(IgniteConfiguration igniteConfiguration) {
+		Ignite ignite = Ignition.start(igniteConfiguration);
+		return ignite;
+	}
+
+	@Bean
+	IgniteConfiguration igniteConfiguration() {
+		IgniteConfiguration config = new IgniteConfiguration();
+		return config;
 	}
 }
