@@ -1,6 +1,6 @@
 package com.sickhack.base.storage;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
 
 import java.util.UUID;
 
@@ -20,15 +20,11 @@ public class MyUuidConverterTest {
 		byte[] bytes = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
 
 		Binary bin = new Binary(BsonBinarySubType.UUID_STANDARD, bytes);
-		logger.info("{}", converter.decode(UUID.class, bin));
+		assertEquals(UUID.fromString("01020304-0506-0708-090a-0b0c0d0e0f10"), converter.decode(UUID.class, bin));
 
+		// http://3t.io/blog/best-practices-uuid-mongodb/
 		bin = new Binary(BsonBinarySubType.UUID_LEGACY, bytes);
-		logger.info("{}", converter.decode(UUID.class, bin));
-
-		bin = new Binary(BsonBinarySubType.UUID_STANDARD, bytes);
-		logger.info("{}", converter.decode(UUID.class, bin));
-
-		fail("Not yet implemented");
+		assertEquals(UUID.fromString("08070605-0403-0201-100f-0e0d0c0b0a09"), converter.decode(UUID.class, bin));
 	}
 
 }
