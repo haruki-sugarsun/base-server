@@ -2,6 +2,7 @@ package com.sickhack.base.storage;
 
 import java.util.UUID;
 
+import org.bson.BsonBinary;
 import org.bson.BsonBinarySubType;
 import org.bson.BsonSerializationException;
 import org.bson.types.Binary;
@@ -23,8 +24,13 @@ public class MyUuidConverter extends TypeConverter implements SimpleValueConvert
 	@Override
 	public Object encode(final Object value, final MappedField optionalExtraInfo) {
 		logger.info("Encoding {}", value);
-		// TODO: Implement.
-		return null;
+
+		UUID uuid = (UUID) value;
+		byte[] binaryData = new byte[16];
+
+		writeLongToArrayBigEndian(binaryData, 0, uuid.getMostSignificantBits());
+		writeLongToArrayBigEndian(binaryData, 8, uuid.getLeastSignificantBits());
+		return new BsonBinary(BsonBinarySubType.UUID_STANDARD, binaryData);
 	}
 
 	@Override
