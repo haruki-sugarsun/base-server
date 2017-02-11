@@ -18,9 +18,13 @@ import org.mongodb.morphia.mapping.MappingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-// Idea from https://gist.github.com/magro/742807
+/**
+ * Custom TypeConverter to store UUID in the UUID_STANDARD Binary encoding.
+ */
 public class MyUuidConverter extends TypeConverter implements SimpleValueConverter {
 	private static final Logger logger = LoggerFactory.getLogger(MyUuidConverter.class);
+
+	// TypeConverter idea from https://gist.github.com/magro/742807
 
 	public MyUuidConverter() {
 		super(UUID.class);
