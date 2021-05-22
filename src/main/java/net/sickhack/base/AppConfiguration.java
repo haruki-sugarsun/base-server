@@ -14,14 +14,14 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan
 public class AppConfiguration {
-	private static final Logger logger = LoggerFactory.getLogger(AppConfiguration.class);
+    private static final Logger logger = LoggerFactory.getLogger(AppConfiguration.class);
 
-	/**
-	 * Fake bean creation to do initializations.
-	 */
-	@Bean
-	Void initializations() {
-		logger.info("Initializing.");
-		return null;
-	}
+    /**
+     * Fake bean creation to do initializations.
+     */
+    @Bean
+    Void initializations() {
+        logger.info("Initializing.");
+        return null;
+    }
 }

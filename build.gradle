@@ -1,54 +1,31 @@
 // Plugins
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.4.RELEASE")
-    }
+plugins {
+    id 'org.springframework.boot' version '2.5.0'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'idea'
+    id 'eclipse'
 }
 
-apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: 'eclipse'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
-
-// Project Configurations
-configurations {
-    javaAgent
-}
+group = 'net.sickhack.base'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
 
 repositories {
     mavenCentral()
 }
 
+// Project Configurations
 dependencies {
-    // Spring Boot
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf'
-    implementation group: 'org.springframework.boot', name: 'spring-boot-devtools'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
 
-	// https://stackoverflow.com/questions/50555176/springboot-2-0-2-not-working-with-thymeleaf-template-throwing-404-error
-    implementation group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect'
+    // Thymeleaf
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
 
-    // Test
-    // TODO: Consider upgrading to JUnit5. https://github.com/junit-team/junit5-samples/tree/r5.2.0/junit5-jupiter-starter-gradle
-    testImplementation group: 'junit', name: 'junit', version: '4.12'
-}   
-
-springBoot {
-    // Change it when you write customized app.
-    mainClassName = 'net.sickhack.base.Application'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-bootJar {
-    baseName = 'base-server'
-    version =  '0.0.1'
-}
-
-// Require Java 8 to build the project.
-tasks.withType(JavaCompile) {
-    sourceCompatibility '1.8'
-    targetCompatibility '1.8'
+test {
+    useJUnitPlatform()
 }

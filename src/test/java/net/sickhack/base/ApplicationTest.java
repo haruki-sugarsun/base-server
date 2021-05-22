@@ -1,12 +1,18 @@
 package net.sickhack.base;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
+@SpringBootTest
 public class ApplicationTest {
 
-	@Test
-	public void test() {
-		// Stub
-	}
+    @Test
+    void contextLoads() {
+    }
+
+    @Test
+    public void test() {
+        // Stub
+    }
 
 }
