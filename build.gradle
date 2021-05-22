@@ -25,16 +25,16 @@ repositories {
 
 dependencies {
     // Spring Boot
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf'
-    compile group: 'org.springframework.boot', name: 'spring-boot-devtools'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-devtools'
 
 	// https://stackoverflow.com/questions/50555176/springboot-2-0-2-not-working-with-thymeleaf-template-throwing-404-error
-    compile group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect'
+    implementation group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect'
 
     // Test
     // TODO: Consider upgrading to JUnit5. https://github.com/junit-team/junit5-samples/tree/r5.2.0/junit5-jupiter-starter-gradle
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
 }   
 
 springBoot {
