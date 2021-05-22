@@ -39,7 +39,7 @@ dependencies {
 
 springBoot {
     // Change it when you write customized app.
-    mainClassName = 'com.sickhack.base.Application'
+    mainClassName = 'net.sickhack.base.Application'
 }
 
 bootJar {

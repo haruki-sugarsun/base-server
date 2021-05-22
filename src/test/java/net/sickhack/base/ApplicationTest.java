@@ -1,4 +1,4 @@
-package com.sickhack.base;
+package net.sickhack.base;
 
 import org.junit.Test;
 
