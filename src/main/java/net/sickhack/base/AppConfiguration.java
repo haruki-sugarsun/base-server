@@ -11,8 +11,8 @@ import org.springframework.context.annotation.Configuration;
  *
  * @author Haruki Sato
  */
-@Configuration
-@ComponentScan
+//@Configuration
+//@ComponentScan
 public class AppConfiguration {
     private static final Logger logger = LoggerFactory.getLogger(AppConfiguration.class);
 
